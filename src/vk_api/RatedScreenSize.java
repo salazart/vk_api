@@ -2,6 +2,7 @@ package vk_api;
 
 import java.awt.*;
 
+//create class rated ScreenSize for frame
 class RatedScreenSize {
 	private int screenWidth;
 	private int screenHeight;
