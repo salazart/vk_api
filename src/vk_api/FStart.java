@@ -8,29 +8,25 @@ import javax.swing.*;
 
 //create frame for main window
 class FStart extends JFrame{	
-	private String temp;
-	
-	private JEditorPane EPContent;
+	private static String urlText;
+	private static JEditorPane EPContent;
 	
 	private class UrlPanel extends JPanel{
 		public UrlPanel(){
 			//add TextField for write text url
-			JTextField urlText = new JTextField(20);
-			add(urlText);
+			final JTextField TFUrlText = new JTextField(20);
+			add(TFUrlText);
 			
 			//add goButton
 			GoButton goButton = new GoButton();
 			add(goButton);
 			goButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
-					EPContent.setText("name");
-					/*try {
-						
-						//Connection connection = new Connection();
-						//connection.setUrlConnection(urlText);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}*/
+					//assign urlText URL
+					urlText = TFUrlText.getText();
+					//connection on Internet with url link
+					Connection connection = new Connection(urlText);
+					EPContent.setText(connection.getContent());
 				}
 			});
 			
@@ -47,7 +43,7 @@ class FStart extends JFrame{
 		//add up panel on window for navigation
 		UrlPanel urlPanel = new UrlPanel();
 		add(urlPanel,BorderLayout.NORTH);
-		
+		//add JEditorPane for print content from server
 		EPContent = new JEditorPane();
 		add(EPContent);
 		
