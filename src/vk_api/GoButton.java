@@ -1,12 +1,20 @@
 package vk_api;
 
-import javax.swing.*;
+import java.awt.event.*;
+import java.io.IOException;
 
+import javax.swing.*;
+//creat goButton for start transition link
 class GoButton extends JButton{
-	public JButton GoButton(){
-		JButton goButton = new JButton("Go");
+	private String s;
+	public GoButton(){
+		setText("Go");
 		
-		return goButton;
+	}
+	public String getGoButtonText(){
+
+		return s;
+
 	}
 	
 }

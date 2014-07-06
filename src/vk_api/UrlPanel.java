@@ -1,21 +1,29 @@
 package vk_api;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 //create UrlString for frame 
-class UrlPanel extends JPanel{
-	public UrlPanel(){
-		
-		JTextField urlText = new JTextField(20);
-		add(urlText);
-		
-		JButton goButton = new JButton("Go");
-		add(goButton);
-		
-		JButton stopButton = new JButton("Stop");
-		add(stopButton);
-		
+
+/*	public void setTFurlText(String urlText){
+		TFurlText.setText(urlText);
 	}
+	public String getTFurlText(){
+		return TFurlText.getText();
+	}
+	*/
+
+
+
+class Tmp{
+	public static String temp;
+	/*public Tmp(String s){
+		temp=s;
+	}
+	public String getTmp(){
+		return temp;
+	}*/
 }
