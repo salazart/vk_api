@@ -14,8 +14,10 @@ class FStart extends JFrame{
 	private class UrlPanel extends JPanel{
 		public UrlPanel(){
 			//add TextField for write text url
-			final JTextField TFUrlText = new JTextField(20);
+			final UrlTextField TFUrlText = new UrlTextField();
 			add(TFUrlText);
+			
+			UrlTextField urlTextField = new UrlTextField();
 			
 			//add goButton
 			GoButton goButton = new GoButton();
@@ -36,13 +38,16 @@ class FStart extends JFrame{
 			
 		}
 	}
+	//This is main method
 	public FStart(){
 		//change size window FStart
 		RatedScreenSize ratedScreenSize = new RatedScreenSize();
 		setSize(ratedScreenSize.getRatedWidth(),ratedScreenSize.getRatedHeight());
+		
 		//add up panel on window for navigation
 		UrlPanel urlPanel = new UrlPanel();
 		add(urlPanel,BorderLayout.NORTH);
+		
 		//add JEditorPane for print content from server
 		EPContent = new JEditorPane();
 		add(EPContent);

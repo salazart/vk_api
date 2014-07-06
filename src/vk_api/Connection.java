@@ -23,8 +23,8 @@ class Connection {
 			}
 			outTextConn.close();
 		} catch (IOException e) {
+			//for Invalid connection or link
 			outContent="Invalid connection or link";
-			//e.printStackTrace();
 		}
 		
 		
