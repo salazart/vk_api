@@ -27,8 +27,13 @@ class FStart extends JFrame{
 					//assign urlText URL
 					urlText = TFUrlText.getText();
 					//connection on Internet with url link
-					Connection connection = new Connection(urlText);
-					EPContent.setText(connection.getContent());
+					try {
+						HttpsConnection httpsConnection = new HttpsConnection(urlText);
+						EPContent.setText(httpsConnection.GetContent());
+					
+					} catch (IOException e) {
+						EPContent.setText("Invalid connection");
+					}
 				}
 			});
 			

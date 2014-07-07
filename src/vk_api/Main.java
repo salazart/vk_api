@@ -4,7 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-public class F_vk_api {
+public class Main {
 	public static void main(String[] args){
 		EventQueue.invokeLater (new Runnable(){
 			public void run(){
