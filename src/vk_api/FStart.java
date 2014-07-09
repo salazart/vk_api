@@ -30,10 +30,17 @@ class FStart extends JFrame{
 					try {
 						HttpsConnection httpsConnection = new HttpsConnection(urlText);
 						EPContent.setText(httpsConnection.GetContent());
+						
+						SaveFileDialog saveFileDialog = new SaveFileDialog();
+						saveFileDialog.ShowSaveDialog();
+						
+						//write content in file with name saveFileDialog.getFileName()
 						WriteFile writeFile = new WriteFile();
-						writeFile.setFileName("1.txt");
+						writeFile.setFileName(saveFileDialog.getFileDirectory()+saveFileDialog.getFileName());
 						writeFile.setFileContent(httpsConnection.GetContent());
 						writeFile.GoWriteFile();
+						
+						
 					
 					} catch (IOException e) {
 						EPContent.setText("Invalid connection");

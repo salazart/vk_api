@@ -11,6 +11,8 @@ public class Main {
 				FStart frame = new FStart();
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.setVisible(true);
+				
+
 			}
 		});
 	}
