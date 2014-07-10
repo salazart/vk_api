@@ -9,23 +9,24 @@ import javax.swing.*;
 //create frame for main window
 class FStart extends JFrame{	
 	private static String urlText;
-	private static JEditorPane EPContent;
+	private static ViewHTMLContent EPContent;
 	
 	private class UrlPanel extends JPanel{
 		public UrlPanel(){
+			setBackground(Color.blue);
 			//add TextField for write text url
 			final UrlTextField TFUrlText = new UrlTextField();
 			add(TFUrlText);
-			
-			UrlTextField urlTextField = new UrlTextField();
-			
-			//add goButton
+						
+			//add goButton and than ActionListener
 			GoButton goButton = new GoButton();
 			add(goButton);
 			goButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
+					
 					//assign urlText URL
 					urlText = TFUrlText.getText();
+					
 					//connection on Internet with url link
 					try {
 						HttpsConnection httpsConnection = new HttpsConnection(urlText);
@@ -35,11 +36,12 @@ class FStart extends JFrame{
 						saveFileDialog.ShowSaveDialog();
 						
 						//write content in file with name saveFileDialog.getFileName()
-						WriteFile writeFile = new WriteFile();
-						writeFile.setFileName(saveFileDialog.getFileDirectory()+saveFileDialog.getFileName());
-						writeFile.setFileContent(httpsConnection.GetContent());
-						writeFile.GoWriteFile();
-						
+						if(saveFileDialog.getFileName()!=null){
+							WriteFile writeFile = new WriteFile();
+							writeFile.setFileName(saveFileDialog.getFileDirectory()+saveFileDialog.getFileName());
+							writeFile.setFileContent(httpsConnection.GetContent());
+							writeFile.GoWriteFile();
+						}
 						
 					
 					} catch (IOException e) {
@@ -54,6 +56,10 @@ class FStart extends JFrame{
 			
 		}
 	}
+	
+	
+
+
 	//This is main method
 	public FStart(){
 		//change size window FStart
@@ -64,9 +70,11 @@ class FStart extends JFrame{
 		UrlPanel urlPanel = new UrlPanel();
 		add(urlPanel,BorderLayout.NORTH);
 		
-		//add JEditorPane for print content from server
-		EPContent = new JEditorPane();
-		add(EPContent);
+		ViewHTMLContent viewHTMLContent = new ViewHTMLContent();
+		add(viewHTMLContent,BorderLayout.CENTER);
 		
+
+		
+
 	}
 }
