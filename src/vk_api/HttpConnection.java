@@ -4,12 +4,12 @@ import java.io.*;
 import java.net.*;
 
 //create Connection with Inet
-class Connection {
+class HttpConnection {
 	private static String outContent;
-	public Connection(String inUrl){
+	public HttpConnection(String inUrl){
 		
 		try {
-			URL urlText = new URL("https://"+inUrl);
+			URL urlText = new URL(inUrl);
 			BufferedReader outTextConn = new BufferedReader(
 					new InputStreamReader(urlText.openStream()));
 			String inputLine;

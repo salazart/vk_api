@@ -36,7 +36,7 @@ class HttpsConnection {
 			System.out.println("Error in connection");
 		}
 	}
-	public String GetContent(){
+	public String getContent(){
 		return outContent;
 	}
 

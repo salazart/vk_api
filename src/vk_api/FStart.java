@@ -14,9 +14,22 @@ class FStart extends JFrame{
 	private class UrlPanel extends JPanel{
 		public UrlPanel(){
 			setBackground(Color.blue);
+			
 			//add TextField for write text url
 			final UrlTextField TFUrlText = new UrlTextField();
 			add(TFUrlText);
+			
+			//create Listener for intercept KeyCode ENTER
+			TFUrlText.addKeyListener(new KeyListener(){
+				public void keyPressed(KeyEvent arg0) {
+					if(arg0.getKeyCode()==KeyEvent.VK_ENTER){
+						urlText = TFUrlText.getText();
+						EPContent.setUrl(urlText);
+					}
+				}
+				public void keyReleased(KeyEvent arg0) {}
+				public void keyTyped(KeyEvent arg0) {}
+			});
 						
 			//add goButton and than ActionListener
 			GoButton goButton = new GoButton();
@@ -25,40 +38,33 @@ class FStart extends JFrame{
 				public void actionPerformed(ActionEvent event){
 					
 					//assign urlText URL
-					urlText = TFUrlText.getText();
+					
 					
 					//connection on Internet with url link
-					try {
-						HttpsConnection httpsConnection = new HttpsConnection(urlText);
-						EPContent.setText(httpsConnection.GetContent());
+					
+						//create httpsconnection and take content
+						//HttpConnection httpConnection = new HttpConnection(urlText);
 						
-						SaveFileDialog saveFileDialog = new SaveFileDialog();
-						saveFileDialog.ShowSaveDialog();
+						
+						//open SaveFileDialog for save result
+						//SaveFileDialog saveFileDialog = new SaveFileDialog();
+						//saveFileDialog.ShowSaveDialog();
 						
 						//write content in file with name saveFileDialog.getFileName()
-						if(saveFileDialog.getFileName()!=null){
+						/*if(saveFileDialog.getFileName()!=null){
 							WriteFile writeFile = new WriteFile();
 							writeFile.setFileName(saveFileDialog.getFileDirectory()+saveFileDialog.getFileName());
-							writeFile.setFileContent(httpsConnection.GetContent());
+							writeFile.setFileContent(httpConnection.getContent());
 							writeFile.GoWriteFile();
-						}
-						
-					
-					} catch (IOException e) {
-						EPContent.setText("Invalid connection");
-					}
+						}	*/				
 				}
 			});
 			
 			//add button stop
 			JButton stopButton = new JButton("Stop");
 			add(stopButton);
-			
 		}
 	}
-	
-	
-
 
 	//This is main method
 	public FStart(){
@@ -70,11 +76,7 @@ class FStart extends JFrame{
 		UrlPanel urlPanel = new UrlPanel();
 		add(urlPanel,BorderLayout.NORTH);
 		
-		ViewHTMLContent viewHTMLContent = new ViewHTMLContent();
-		add(viewHTMLContent,BorderLayout.CENTER);
-		
-
-		
-
+		EPContent = new ViewHTMLContent();
+		add(EPContent,BorderLayout.CENTER);
 	}
 }
