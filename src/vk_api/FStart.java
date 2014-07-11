@@ -17,13 +17,13 @@ class FStart extends JFrame{
 			
 			//add TextField for write text url
 			final UrlTextField TFUrlText = new UrlTextField();
+			urlText = TFUrlText.getText();
 			add(TFUrlText);
 			
 			//create Listener for intercept KeyCode ENTER
 			TFUrlText.addKeyListener(new KeyListener(){
 				public void keyPressed(KeyEvent arg0) {
 					if(arg0.getKeyCode()==KeyEvent.VK_ENTER){
-						urlText = TFUrlText.getText();
 						EPContent.setUrl(urlText);
 					}
 				}
