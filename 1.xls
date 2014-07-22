@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><response list="true">
+ <user>
+  <uid>135717579</uid>
+  <first_name>Andrey</first_name>
+  <last_name>Kravchuk</last_name>
+  <bdate>6.1</bdate>
+  <city>0</city>
+  <country>2</country>
+  <mobile_phone/>
+  <home_phone/>
+ </user>
+ <user>
+  <uid>215560</uid>
+  <first_name>Arina</first_name>
+  <last_name>Borisova</last_name>
+  <bdate>7.6.1982</bdate>
+  <city>1</city>
+  <country>1</country>
+ </user>
+</response>
+

@@ -23,6 +23,7 @@ class ViewHTMLContent extends JPanel{
 	public void setUrl(String url){
 		try {
 			editorPane.setPage(url);
+			
 		} catch (IOException e) {
 			editorPane.setText("Invalid connection");
 		}
