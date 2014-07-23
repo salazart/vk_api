@@ -11,43 +11,45 @@ public class NextString {
 	private int lengthString;
 	
 	private String NextSymbol(String curentSymbol){
-		String nextSymbol = null;
-		for(int i=0; i<abcString.length(); i++){
-
-			//if curentSymbol equels one symbol begin stream
-			if(curentSymbol.equals(abcString.substring(i, i+1))){
+		for(int j=0; j<abcString.length(); j++){
+			
+			//if curent symbol equal curent symbol in abc
+			if(curentSymbol.equals(abcString.substring(j,j+1))){
 				
-				//if curentSymbol == end symbol abc
-				if(curentSymbol.equals(abcString.substring(abcString.length()-1, abcString.length()))){
-					nextSymbol=abcString.substring(0,1);
-					//System.out.print(nextSymbol);
+				//if current symbol == end symbol in abc
+				if(curentSymbol.equals(abcString.substring(abcString.length()-1,abcString.length()))){
+					curentSymbol=abcString.substring(0,1);
+					break;
+				}else{
+					curentSymbol=abcString.substring(j+1,j+2);
 					break;
 				}
-				
-				nextSymbol=abcString.substring(i+1, i+2);
-				break;
 			}
 		}
-		return nextSymbol;
+		return curentSymbol;
 	}
-	
-	public NextString(String curentString){
-		nextString=curentString;
-		lengthString = nextString.length();
-		for(int i=lengthString-1; i>=0; i--){
 		
-			//found next stream
-			String nextSymbol = NextSymbol(nextString.substring(i, i+1));
-			//create next stream
-			if(!nextSymbol.equals(abcString.substring(0,1))){
-				nextString = nextString.substring(0,i)+nextSymbol+nextString.substring(i+1,i+2);
-				System.out.println(nextString);
-				break;
+	public NextString(String curentString){
+		lengthString=curentString.length()-1;
+		for(int i=lengthString; i>=0; i--){
+		
+			String curentSymbol=null;
+			curentSymbol=curentString.substring(i,i+1);
+			//take next symbol
+			curentSymbol=NextSymbol(curentSymbol);
+
+			//if curent symbol == first symbol
+			if(curentSymbol.equals(abcString.substring(0,1))){
+				InsSymbol insSymbol = new InsSymbol(curentString,curentSymbol,i);
+				curentString = insSymbol.GetInsString();
+				continue;
 			}else{
-				//if stream have without transition
-				nextString = nextString.substring(0,i)+nextSymbol;
+				InsSymbol insSymbol = new InsSymbol(curentString,curentSymbol,i);
+				curentString = insSymbol.GetInsString();
+				break;
 			}
 		}
+		nextString=curentString;
 	}
 	
 	public String getNextString(){
